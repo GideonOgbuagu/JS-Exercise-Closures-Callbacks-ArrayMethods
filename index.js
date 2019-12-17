@@ -87,8 +87,12 @@ function processLastItem(stringList, callback) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  // accummulator can also be called sum or total as in the case of addition
+  const listSum = numberList.reduce((accumulator, number) => {  
+      return accumulator = accumulator + number; // number here is the currentValue of the array
+  }, 0);
+  return callback(listSum);  
 }
 
 /**
