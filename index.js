@@ -139,8 +139,17 @@ function processProduct(num1, num2, callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, callback) {
+  // let isContained = false;
+  //   list.forEach((element, index, array) => {
+  //     if(element === item){
+  //       isContained = true;
+  //     }
+  //   })
+  //   return callback(isContained);
+
+  let isContained = list.includes(item);
+  return callback(isContained);
 }
 
 /**
@@ -162,9 +171,26 @@ function processContains(/* CODE HERE */) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  // let returnedArr = list.filter((element, index, array) => {
+  //     if(returnedArr.length > 0 && returnedArr.contains(element)){
+  //       return false;
+  //     }else {
+  //       return true;
+  //     }   
+  // })
+  // return callback(returnedArr);
+  let deDupedArray = [];
+  list.forEach((element, index, array) => {
+    if(deDupedArray.length > 0 && deDupedArray.includes(element)){
+         return 
+      }else {
+        deDupedArray.push(element);
+      }   
+  })
+  return callback(deDupedArray)
 }
+
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -184,8 +210,12 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  let returnedArr = [];
+  runners.forEach((element, index, array) => {
+      return returnedArr.push(`${element.last_name}, ${element.first_name}`);
+  })
+  return returnedArr;
 }
 
 /**
