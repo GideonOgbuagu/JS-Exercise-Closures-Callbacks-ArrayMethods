@@ -182,10 +182,8 @@ function processDuplicateFree(list, callback) {
   // return callback(returnedArr);
   let deDupedArray = [];
   list.forEach((element, index, array) => {
-    if(deDupedArray.length > 0 && deDupedArray.includes(element)){
-         return 
-      }else {
-        deDupedArray.push(element);
+    if(deDupedArray.includes(element) === false){
+        deDupedArray.push(element);   
       }   
   })
   return callback(deDupedArray)
@@ -268,8 +266,11 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+   const total = runners.reduce((accummulator, currentValue) => {
+    return accummulator + currentValue.donation;
+  }, 0);
+  return total;
 }
 
 /////////////// CLOSURES ///////////////
@@ -290,10 +291,11 @@ function tallyUpDonations(/* CODE HERE */) {
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
-  function counter() {
-    ++count
+  let count = 0;
+  return function counter() {
+    return count++;
   }
+  
   // BROKEN CODE ENDS
 }
 
@@ -317,8 +319,16 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
+
+function counterMakerWithLimit(max) {
   /* CODE HERE */
+  let count = 0;
+  return function counter(){
+    if(count > max) {
+       count = 0; 
+    }
+    return count++;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
